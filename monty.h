@@ -40,6 +40,9 @@ typedef struct instruction_s
 } instruction_t;
 
 /*project function*/
+void unknown_instruction(char *opcode, int line_num, char *buffer_line);
+void parse_push(char *buffer_line, int line_num, stack_t **stack);
+void parse_file(FILE *file, stack_t **stack);
 void pall(stack_t **stack);
 void push(stack_t **stack, int num);
 void pint(stack_t **stack, unsigned int line_number);

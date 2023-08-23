@@ -1,9 +1,8 @@
 #include "monty.h"
 /**
  * push - push node into a stack
- * @added_node: node representing new value added.
+ * @stack: node representing new value added.
  * @num: value added to the stack
- * Return: number of nodes.
  */
 void push(stack_t **stack, int num)
 {
@@ -21,9 +20,13 @@ void push(stack_t **stack, int num)
 
 	if (*stack != NULL)
 		(*stack)->prev = new_node;
-	else
-		*stack = new_node;
+	*stack = new_node;
 }
+
+/**
+ * pall - display nodes pushed into a stack
+ * @stack: node representing new value added.
+ */
 void pall(stack_t **stack)
 {
 	stack_t *current_node = *stack;
@@ -35,8 +38,6 @@ void pall(stack_t **stack)
 	}
 	else
 	{
-		while (current_node->next != NULL)
-			current_node = current_node->next;
 		while (current_node != NULL)
 		{
 			printf("%d\n", current_node->n);

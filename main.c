@@ -1,23 +1,47 @@
 #include "monty.h"
+/**
+ * main - a program that implements stacks and
+ * queues using monty
+ * @ac: number of arguments
+ * @args: arguments inputed.
+ * Return: 0.
+ */
 int main(int ac, char *args[])
 {
-	stack_t *stack = NULL;
-	char *buffer_line = NULL;
-	size_t length = 0;
-	int line_num = 0, val;
-	char *file_path = args[1], *opcode, *val_str;
-	FILE *file = fopen(file_path, "r");
+	FILE *file;
+	stack_t *stack;
 
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
+
+	file = fopen(args[1], "r");
 	if (file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s \n", file_path);
+		fprintf(stderr, "Error: Can't open file %s \n", args[1]);
 		exit(EXIT_FAILURE);
 	}
+
+	stack = NULL;
+	parse_file(file, &stack);
+	fclose(file);
+
+	return (0);
+}
+/**
+ * parse_file - a function that prints the
+ * number of arguments passed into it.
+ * @file: file to open.
+ * @stack: linked list.
+ */
+void parse_file(FILE *file, stack_t **stack)
+{
+	char *buffer_line = NULL;
+	size_t length = 0;
+	int line_num = 0;
+	char *opcode;
 
 	while (getline(&buffer_line, &length, file) != -1)
 	{
@@ -28,31 +52,55 @@ int main(int ac, char *args[])
 
 		if (strcmp(opcode, "push") == 0)
 		{
-			val_str = strtok(NULL, " \t\n");
-			if (val_str == NULL)
-			{
-				fprintf(stderr, "L%d: usage: push integer\n", line_num);
-				free(buffer_line);
-				fclose(file);
-				exit(EXIT_FAILURE);
-			}
-			val = atoi(val_str);
-			push(&stack, val);
+			parse_push(buffer_line, line_num, stack);
 		}
 		else if (strcmp(opcode, "pall") == 0)
 		{
-			pall(&stack);
+			pall(stack);
 		}
 		else
 		{
-			fprintf(stderr, "L%d: unknown instruction %s \n", line_num, opcode);
-			free(buffer_line);
-			fclose(file);
-			exit(EXIT_FAILURE);
+			unknown_instruction(opcode, line_num, buffer_line);
 		}
 	}
-	free(buffer_line);
-	fclose(file);
 
-	return (0);
+	free(buffer_line);
+}
+
+/**
+ * parse_push - a function that implement push
+ * and checks if value given is a number
+ * @buffer_line: line to read command from.
+ * @line_num: the line at which the command is found it the file.
+ * @stack: node used.
+ */
+void parse_push(char *buffer_line, int line_num, stack_t **stack)
+{
+	int val;
+	char *val_str = strtok(NULL, " \t\n");
+
+	if (val_str == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		free(buffer_line);
+		exit(EXIT_FAILURE);
+	}
+	val = atoi(val_str);
+	push(stack, val);
+	(void)buffer_line;
+	(void)val;
+}
+
+/**
+ * unknown_instruction - function that handles unknown command.
+ * @opcode: command.
+ * @line_num: the line at which the command
+ * is found it the file.
+ * @buffer_line: line to read command from.
+ */
+void unknown_instruction(char *opcode, int line_num, char *buffer_line)
+{
+	fprintf(stderr, "L%d: unknown instruction %s \n", line_num, opcode);
+	free(buffer_line);
+	exit(EXIT_FAILURE);
 }
