@@ -103,12 +103,18 @@ void unknown_instruction(char *opcode, int line_num, char *buffer_line)
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * free_stack - free a linked list
+ * @stack: node to free
+ */
 void free_stack(stack_t *stack)
 {
 	while (stack != NULL)
 	{
 		stack_t *temp = stack;
+
 		stack = stack->next;
+
 		if (temp != NULL)
 			free(temp);
 	}
