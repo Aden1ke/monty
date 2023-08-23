@@ -17,3 +17,12 @@ void pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * nop - does nothing
+ * @stack: empty stack
+ * Return: void
+ */
+void nop(stack_t *stack)
+{
+	/* nothing to see here*/
+}
