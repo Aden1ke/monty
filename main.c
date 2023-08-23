@@ -63,6 +63,7 @@ void parse_file(FILE *file, stack_t **stack)
 	}
 
 	free(buffer_line);
+	free_stack(*stack);
 }
 
 /**
@@ -85,7 +86,6 @@ void parse_push(char *buffer_line, int line_num, stack_t **stack)
 	}
 	val = atoi(val_str);
 	push(stack, val);
-	(void)buffer_line;
 	(void)val;
 }
 
@@ -101,4 +101,15 @@ void unknown_instruction(char *opcode, int line_num, char *buffer_line)
 	fprintf(stderr, "L%d: unknown instruction %s \n", line_num, opcode);
 	free(buffer_line);
 	exit(EXIT_FAILURE);
+}
+
+void free_stack(stack_t *stack)
+{
+	while (stack != NULL)
+	{
+		stack_t *temp = stack;
+		stack = stack->next;
+		if (temp != NULL)
+			free(temp);
+	}
 }
