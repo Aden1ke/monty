@@ -33,7 +33,6 @@ void pall(stack_t **stack)
 
 	if (*stack == NULL)
 	{
-		printf("stack is empty\n");
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -44,4 +43,22 @@ void pall(stack_t **stack)
 			current_node = current_node->next;
 		}
 	}
+}
+
+/**
+ * pop - push node into a stack
+ * @stack: node representing new value added.
+ * @line_number: line of the command in the file
+ */
+void pop(stack_t **stack, int line_number)
+{
+	stack_t *current_node = *stack;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	*stack = (*stack)->next;
+	free(current_node);
 }

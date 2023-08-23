@@ -1,8 +1,9 @@
-push 256
+push 4
 push 1
 push 2
-  push 50000000
+  push 3
                pall
-	       push 6000
-	       pall
-	 pint
+	 pop
+	 pall
+	 pop
+	 pall
