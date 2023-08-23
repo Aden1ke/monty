@@ -5,4 +5,4 @@ push 2
                pall
 	       push 6000
 	       pall
-	 path
+	 pint

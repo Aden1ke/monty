@@ -51,13 +51,11 @@ void parse_file(FILE *file, stack_t **stack)
 			continue;
 
 		if (strcmp(opcode, "push") == 0)
-		{
 			parse_push(buffer_line, line_num, stack);
-		}
 		else if (strcmp(opcode, "pall") == 0)
-		{
 			pall(stack);
-		}
+		else if (strcmp(opcode, "pint") == 0)
+			pint(stack, line_num);
 		else
 		{
 			unknown_instruction(opcode, line_num, buffer_line);
