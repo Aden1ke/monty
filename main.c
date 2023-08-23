@@ -40,7 +40,7 @@ void parse_file(FILE *file, stack_t **stack)
 {
 	size_t length = 0;
 	int line_num = 0;
-	char *buffer_line = NULL, *opcode;;
+	char *buffer_line = NULL, *opcode;
 
 	while (getline(&buffer_line, &length, file) != -1)
 	{
@@ -56,9 +56,9 @@ void parse_file(FILE *file, stack_t **stack)
 		else if (strcmp(opcode, "pint") == 0)
 			pint(stack, line_num);
 		else if (strcmp(opcode, "pop") == 0)
-                        pop(stack, line_num);
+			pop(stack, line_num);
 		else if (strcmp(opcode, "nop") == 0)
-			nop(stack);
+			nop(*stack);
 		else
 			unknown_instruction(opcode, line_num, buffer_line);
 	}
