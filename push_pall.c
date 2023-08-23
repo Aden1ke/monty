@@ -41,7 +41,7 @@ void pall(stack_t **stack)
 		while (current_node != NULL)
 		{
 			printf("%d\n", current_node->n);
-			current_node = current_node->prev;
+			current_node = current_node->next;
 		}
 	}
 }
