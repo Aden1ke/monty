@@ -53,26 +53,7 @@ void parse_file(FILE *file, stack_t **stack)
 			continue;
 		}
 
-		if (strcmp(opcode, "push") == 0)
-			parse_push(buffer_line, line_num, stack);
-		else if (strcmp(opcode, "pall") == 0)
-			pall(stack);
-		else if (strcmp(opcode, "pint") == 0)
-			pint(stack, line_num);
-		else if (strcmp(opcode, "pop") == 0)
-			pop(stack, line_num);
-		else if (strcmp(opcode, "swap") == 0)
-			swap(stack, line_num);
-		else if (strcmp(opcode, "nop") == 0)
-			nop(stack);
-		else if (strcmp(opcode, "add") == 0)
-			add(stack, line_num);
-		else if (strcmp(opcode, "sub") == 0)
-			sub(stack, line_num);
-		else if (strcmp(opcode, "mul") == 0)
-			sub(stack, line_num);
-		else
-			unknown_instruction(opcode, line_num, buffer_line);
+		execute_command(opcode, line_num, buffer_line, stack);
 	}
 
 	free(buffer_line);
@@ -92,6 +73,12 @@ void parse_push(char *buffer_line, int line_num, stack_t **stack)
 	char *val_str = strtok(NULL, " \t\n$");
 
 	if (val_str == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_num);
+		free(buffer_line);
+		exit(EXIT_FAILURE);
+	}
+	if (!is_integer(val_str))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_num);
 		free(buffer_line);

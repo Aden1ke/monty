@@ -43,6 +43,7 @@ typedef struct instruction_s
 void unknown_instruction(char *opcode, int line_num, char *buffer_line);
 void parse_push(char *buffer_line, int line_num, stack_t **stack);
 void parse_file(FILE *file, stack_t **stack);
+void execute_command(char *opcode, int line_num, char *buffer, stack_t **stack);
 void pall(stack_t **stack);
 void push(stack_t **stack, int num);
 void pint(stack_t **stack, unsigned int line_number);
@@ -55,4 +56,6 @@ void sub(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+int is_integer(const char *str);
 #endif
