@@ -35,7 +35,6 @@ void pall(stack_t **stack)
 	{
 		printf("%d\n", current_node->n);
 		current_node = current_node->next;
-		
 	}
 }
 
