@@ -1,12 +1,13 @@
 #include "monty.h"
 /**
- * div - divide thr first two stack
+ * divide - divide thr first two stack
  * @stack: the stack in reference
  * @line_number: line number
  * Return: void
  */
-void div(stack_t **stack, unsigned int line_number)
+void divide(stack_t **stack, unsigned int line_number)
 {
+	int result;
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
@@ -29,6 +30,7 @@ void div(stack_t **stack, unsigned int line_number)
  */
 void mod(stack_t **stack,unsigned int line_number)
 {
+	int result;
         if (*stack == NULL || (*stack)->next == NULL)
         {
                 fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
