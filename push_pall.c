@@ -53,8 +53,6 @@ void pop(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	*stack = (*stack)->next;
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
 	free(current_node);
 }
 
