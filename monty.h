@@ -48,6 +48,7 @@ void push(stack_t **stack, int num);
 void pint(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 void nop(void);
-void pop(stack_t **stack, int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, int line_number);
+void add(stack_t **stack, unsigned int line_number);
 #endif
