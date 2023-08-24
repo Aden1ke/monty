@@ -59,8 +59,10 @@ void parse_file(FILE *file, stack_t **stack)
 			pint(stack, line_num);
 		else if (strcmp(opcode, "pop") == 0)
 			pop(stack, line_num);
+		else if (strcmp(opcode, "swap") == 0)
+                        swap(stack, line_num);
 		else if (strcmp(opcode, "nop") == 0)
-			nop();
+			nop(stack);
 		else if (strcmp(opcode, "add") == 0)
 			add(stack, line_num);
 		else
