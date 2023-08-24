@@ -2,7 +2,7 @@ push 1
 pint
 push 2
 pint
-push 3
+push 4
 pint
     sub
 	pall
@@ -11,7 +11,8 @@ add
 pall
 push 5
 pall
-mul
-
+         mul
 pall
+mul
+     pall
 bbbnnnn
