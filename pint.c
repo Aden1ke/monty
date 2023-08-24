@@ -19,6 +19,7 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 /**
  * nop - does nothing
+ * @stack: stack in reference
  * Return: void
  */
 void nop(stack_t **stack)
@@ -35,6 +36,7 @@ void nop(stack_t **stack)
 void swap(stack_t **stack, int line_number)
 {
 	int temp;
+
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short.\n", line_number);
