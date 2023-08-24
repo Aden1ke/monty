@@ -35,14 +35,12 @@ void nop(stack_t **stack)
 void swap(stack_t **stack, int line_number)
 {
 	int temp;
-	stack_t *node;
 	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short.\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	node = (*stack)->next;
-	temp = node->n;
-	node->n = (*stack)->n;
-	(*stack)->n = temp;
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
 }
