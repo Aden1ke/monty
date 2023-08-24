@@ -21,9 +21,10 @@ void pint(stack_t **stack, unsigned int line_number)
  * nop - does nothing
  * Return: void
  */
-void nop(void)
+void nop(stack_t **stack)
 {
 	/* nothing to see here*/
+	(void) stack;
 }
 /**
  * swap - swap two elements in a stack
