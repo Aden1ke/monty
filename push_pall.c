@@ -72,14 +72,18 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void add(stack_t **stack, unsigned int line_number)
 {
+	int result;
+
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	(*stack)->next->n += (*stack)->n;
+	result = (*stack)->next->n = (*stack)->n;
 	pop(stack, line_number);
+	(*stack)->n = result;
+
 }
 /**
  * sub - subtract the top two elements of the stack
@@ -96,7 +100,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	result = (*stack)->next->n - (*stack)->n;
+	result = (*stack)->n - (*stack)->next->n;
 	pop(stack, line_number);
 	(*stack)->n = result;
 }
