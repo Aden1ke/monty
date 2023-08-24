@@ -45,6 +45,8 @@ void parse_file(FILE *file, stack_t **stack)
 	while (getline(&buffer_line, &length, file) != -1)
 	{
 		line_num++;
+		if (buffer_line[0] == '#')
+			continue;
 		opcode = strtok(buffer_line, " \t\n$");
 		if (opcode == NULL || strlen(opcode) == 0)
 		{
