@@ -58,7 +58,7 @@ void parse_file(FILE *file, stack_t **stack)
 		else if (strcmp(opcode, "pop") == 0)
 			pop(stack, line_num);
 		else if (strcmp(opcode, "nop") == 0)
-			nop(*stack);
+			nop();
 		else
 			unknown_instruction(opcode, line_num, buffer_line);
 	}

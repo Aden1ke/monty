@@ -22,8 +22,7 @@ void pint(stack_t **stack, unsigned int line_number)
  * @stack: empty stack
  * Return: void
  */
-void nop(stack_t *stack)
+void nop(void)
 {
-	(void)stack;
 	/* nothing to see here*/
 }
