@@ -19,7 +19,6 @@ void pint(stack_t **stack, unsigned int line_number)
 }
 /**
  * nop - does nothing
- * @stack: empty stack
  * Return: void
  */
 void nop(void)
