@@ -45,7 +45,7 @@ void parse_file(FILE *file, stack_t **stack)
 	while (getline(&buffer_line, &length, file) != -1)
 	{
 		line_num++;
-		opcode = strtok(buffer_line, " \t\n");
+		opcode = strtok(buffer_line, " \t\n$");
 		if (opcode == NULL || strlen(opcode) == 0)
 		{
 			continue;
@@ -83,7 +83,7 @@ void parse_file(FILE *file, stack_t **stack)
 void parse_push(char *buffer_line, int line_num, stack_t **stack)
 {
 	int val;
-	char *val_str = strtok(NULL, " \t\n");
+	char *val_str = strtok(NULL, " \t\n$");
 
 	if (val_str == NULL)
 	{
