@@ -29,6 +29,10 @@ void execute_command(char *opcode, int line_num, char *buffer, stack_t **stack)
 		mul(stack, line_num);
 	else if (strcmp(opcode, "pstr") == 0)
 		pstr(stack, line_num);
+	else if (strcmp(opcode, "mod") == 0)
+                mod(stack, line_num);
+	 else if (strcmp(opcode, "divide") == 0)
+                divide(stack, line_num);
 	else
 		unknown_instruction(opcode, line_num, buffer);
 }
