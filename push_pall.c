@@ -31,17 +31,11 @@ void pall(stack_t **stack)
 {
 	stack_t *current_node = *stack;
 
-	if (*stack == NULL)
+	while (current_node != NULL)
 	{
-		exit(EXIT_FAILURE);
-	}
-	else
-	{
-		while (current_node != NULL)
-		{
-			printf("%d\n", current_node->n);
-			current_node = current_node->next;
-		}
+		printf("%d\n", current_node->n);
+		current_node = current_node->next;
+		
 	}
 }
 

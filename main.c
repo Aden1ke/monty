@@ -69,7 +69,7 @@ void parse_file(FILE *file, stack_t **stack)
 			add(stack, line_num);
 		else if (strcmp(opcode, "sub") == 0)
 			sub(stack, line_num);
-		else if (strcmp(opcode, "sub") == 0)
+		else if (strcmp(opcode, "mul") == 0)
 			sub(stack, line_num);
 		else
 			unknown_instruction(opcode, line_num, buffer_line);

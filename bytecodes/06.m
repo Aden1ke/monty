@@ -1,18 +1,23 @@
 push 1
-pint
 push 2
-pint
-push 4
-pint
-    sub
-	pall
-add
-#      pall
-pall
+push 3
 push 5
+push 6
+push 7
 pall
-         mul
+pop
 pall
-mul
-     pall
+pop
+pall
+pop
+pall
+pop
+pall
+pop
+pall
+pop
+pall
+pop
+pall
+pop
 bbbnnnn
