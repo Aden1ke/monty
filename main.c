@@ -47,7 +47,9 @@ void parse_file(FILE *file, stack_t **stack)
 		line_num++;
 		opcode = strtok(buffer_line, " \t\n");
 		if (opcode == NULL || strlen(opcode) == 0)
+		{
 			continue;
+		}
 
 		if (strcmp(opcode, "push") == 0)
 			parse_push(buffer_line, line_num, stack);
