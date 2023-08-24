@@ -48,3 +48,23 @@ void mod(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = result;
 }
+/**
+ * rotr - rotate the stack from the bottom to top
+ * @stack: stack to be rotated
+ * Return: void
+ */
+void rotr(stack_t **stack)
+{
+	int temp;
+	if ((*stack)->next != NULL)
+	{
+		temp = (*stack);
+		while (tmp->next != NULL)
+		tmp = tmp->next;
+		(*stack)->prev = temp;
+		temp->next = (*stack);
+		temp->prev->next = NULL;
+		temp->prev = NULL;
+		(*stack) = (*stack)->prev;
+	}
+}
