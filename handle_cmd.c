@@ -31,14 +31,15 @@ void pstr(stack_t **stack, unsigned int line_number)
 	if (!temp)
 	{
 		putchar('\n');
-		return;
 	}
 	while (temp && temp->n > 0 && temp->n <= 127)
 	{
-		if (isascii(temp->n))
-			putchar(temp->n);
-		else
+		if (temp->n == 0)
 			break;
+		else if (!isascii(temp->n))
+			break;
+		else
+			putchar(temp->n);
 		temp = temp->next;
 	}
 	putchar('\n');
@@ -53,20 +54,19 @@ void pchar(stack_t **stack, unsigned int line_number)
 	stack_t *temp = *stack;
 
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	while (temp && temp->n > 0 && temp->n <= 127)
+	if (temp && temp->n > 0 && temp->n <= 127)
 	{
-		if (isascii(temp->n))
-			putchar(temp->n);
-		else
-		{
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-			exit(EXIT_FAILURE);
-		}
+		putchar(temp->n);
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 	putchar('\n');
 }
