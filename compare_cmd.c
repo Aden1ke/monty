@@ -30,7 +30,7 @@ void execute_command(char *opcode, int line_num, char *buffer, stack_t **stack)
 	else if (strcmp(opcode, "pstr") == 0)
 		pstr(stack, line_num);
 	else if (strcmp(opcode, "_rot") == 0)
-                _rot(stack, line_num);
+                _rot(stack);
 	else if (strcmp(opcode, "mod") == 0)
                 mod(stack, line_num);
 	 else if (strcmp(opcode, "divide") == 0)
