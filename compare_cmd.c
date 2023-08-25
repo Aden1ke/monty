@@ -33,8 +33,6 @@ void execute_command(char *opcode, int line_num, char *buffer, stack_t **stack)
 		pchar(stack, line_num);
 	else if (strcmp(opcode, "rotr") == 0)
 		rotr(stack);
-	else if (strcmp(opcode, "_rot") == 0)
-		_rot(stack);
 	else if (strcmp(opcode, "mod") == 0)
 		mod(stack, line_num);
 	else if (strcmp(opcode, "divide") == 0)
