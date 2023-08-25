@@ -56,11 +56,12 @@ void mod(stack_t **stack, unsigned int line_number)
 void _rot(stack_t **stack)
 {
 	stack_t *temp;
+
 	if ((*stack)->next != NULL)
 	{
 		temp = (*stack);
 		while (temp->next != NULL)
-		temp = temp->next;
+			temp = temp->next;
 		(*stack)->prev = temp;
 		temp->next = (*stack);
 		temp->prev->next = NULL;
